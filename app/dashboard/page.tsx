@@ -379,8 +379,21 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
             </div>
+
+            {/* Match Details Card - Moved inside the component */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Match Details</CardTitle>
+                <CardDescription>View detailed match information and emissions data</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Link href="/matches">
+                  <Button className="w-full">View All Matches</Button>
+                </Link>
+              </CardContent>
+            </Card>
           </TabsContent>
-          
+
           <TabsContent value="teams">
             <Card>
               <CardHeader>
@@ -392,7 +405,7 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
           </TabsContent>
-          
+
           <TabsContent value="analytics">
             <Card>
               <CardHeader>
@@ -409,14 +422,3 @@ export default function DashboardPage() {
     </div>
   )
 }
-<Card>
-  <CardHeader>
-    <CardTitle>Match Details</CardTitle>
-    <CardDescription>View detailed match information and emissions data</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <Link href="/matches">
-      <Button className="w-full">View All Matches</Button>
-    </Link>
-  </CardContent>
-</Card>
