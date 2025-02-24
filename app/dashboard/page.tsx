@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link'
 
 import { useState, useEffect } from 'react'
 import { 
@@ -408,3 +409,14 @@ export default function DashboardPage() {
     </div>
   )
 }
+<Card>
+  <CardHeader>
+    <CardTitle>Match Details</CardTitle>
+    <CardDescription>View detailed match information and emissions data</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <Link href="/matches">
+      <Button className="w-full">View All Matches</Button>
+    </Link>
+  </CardContent>
+</Card>

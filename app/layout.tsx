@@ -20,3 +20,15 @@ export default function RootLayout({
     </html>
   )
 }
+
+<header className="border-b">
+  <div className="container mx-auto py-4 px-4 flex items-center justify-between">
+    <div className="flex items-center">
+      <Link href="/" className="font-bold text-lg mr-6">Football Emissions</Link>
+      <nav className="flex space-x-4">
+        <Link href="/dashboard" className="hover:text-primary">Dashboard</Link>
+        <Link href="/matches" className="hover:text-primary">Matches</Link>
+      </nav>
+    </div>
+  </div>
+</header>
