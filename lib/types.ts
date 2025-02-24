@@ -9,9 +9,6 @@ export interface Team {
   name: string
   city: string
   country: string
-  stadium: string
-  capacity: number
-  founded: number
 }
 
 export interface Season {
@@ -27,13 +24,4 @@ export interface Match {
   season_id: number
   home_team_id: number
   away_team_id: number
-}
-
-export interface Airport {
-  id: number
-  team_id: number
-  iata_code: string
-  airport_name: string
-  latitude: number
-  longitude: number
 }

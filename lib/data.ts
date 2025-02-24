@@ -1,11 +1,5 @@
 import { supabase } from './supabase'
-import { 
-  League, 
-  Team, 
-  Season, 
-  Match, 
-  Airport 
-} from './types'
+import { League, Team, Season, Match } from './types'
 
 export async function getLeagues(): Promise<League[]> {
   const { data, error } = await supabase
@@ -13,7 +7,7 @@ export async function getLeagues(): Promise<League[]> {
     .select('*')
 
   if (error) throw error
-  return data
+  return data || []
 }
 
 export async function getTeams(): Promise<Team[]> {
@@ -22,7 +16,7 @@ export async function getTeams(): Promise<Team[]> {
     .select('*')
 
   if (error) throw error
-  return data
+  return data || []
 }
 
 export async function getSeasons(): Promise<Season[]> {
@@ -31,7 +25,7 @@ export async function getSeasons(): Promise<Season[]> {
     .select('*')
 
   if (error) throw error
-  return data
+  return data || []
 }
 
 export async function getMatchesBySeason(seasonId: number): Promise<Match[]> {
@@ -41,14 +35,5 @@ export async function getMatchesBySeason(seasonId: number): Promise<Match[]> {
     .eq('season_id', seasonId)
 
   if (error) throw error
-  return data
-}
-
-export async function getTeamAirports(): Promise<Airport[]> {
-  const { data, error } = await supabase
-    .from('airports')
-    .select('*')
-
-  if (error) throw error
-  return data
+  return data || []
 }
