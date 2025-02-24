@@ -74,4 +74,7 @@ export default async function DashboardPage() {
       <div className="container mx-auto p-4 text-red-500">
         <h1 className="text-2xl font-bold">Error Loading Dashboard</h1>
         <p>{error instanceof Error ? error.message : 'An unknown error occurred'}</p>
-      </d
+      </div>
+    )
+  }
+}
