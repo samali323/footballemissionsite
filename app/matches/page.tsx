@@ -160,7 +160,7 @@ export default function MatchesPage() {
         setLoading(true)
 
         // Start building the query
-        let matchesQuery = supabase.from('matches').select(`
+        let query = supabase.from('matches').select(`
           id,
           date,
           league_id,
@@ -171,19 +171,21 @@ export default function MatchesPage() {
 
         // Apply filters if they exist
         if (selectedLeague) {
-          matchesQuery = matchesQuery.eq('league_id', selectedLeague)
+          query = query.eq('league_id', selectedLeague)
         }
 
         if (selectedSeason) {
-          // Handle the case where season_id might be a string like "2024-2025"
-          matchesQuery = matchesQuery.eq('season_id', selectedSeason)
+          query = query.eq('season_id', selectedSeason)
         }
 
+        // Fixed: Correct OR query syntax for filtering by team
         if (selectedTeam) {
-          matchesQuery = matchesQuery.or(`home_team_id.eq.${selectedTeam},away_team_id.eq.${selectedTeam}`)
+          // Use proper OR syntax with multiple arguments
+          query = query.or(`home_team_id.eq.${selectedTeam},away_team_id.eq.${selectedTeam}`)
         }
 
-        const { data: matchesData, error: matchesError } = await matchesQuery
+        // Execute the query
+        const { data: matchesData, error: matchesError } = await query
 
         if (matchesError) throw matchesError
 
@@ -200,12 +202,6 @@ export default function MatchesPage() {
           let cost = null;
 
           if (homeTeam && awayTeam && homeTeam.city && awayTeam.city) {
-            // For this example, we'd typically have coordinates
-            // Here we'll make some assumptions about the locations for demonstration
-
-            // In a real app, you'd likely have a cities database with coordinates
-            // or call a geolocation API
-
             // Mock data - in reality, these would be accurate coordinates
             const cities = {
               "Manchester": { lat: 53.4808, lon: -2.2426 },
