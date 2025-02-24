@@ -7,7 +7,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Globe2, Users, Calendar } from "lucide-react"
 
-export default async function Dashboard() {
+export default async function DashboardPage() {
   try {
     const leagues = await getLeagues()
     const teams = await getTeams()
@@ -74,7 +74,4 @@ export default async function Dashboard() {
       <div className="container mx-auto p-4 text-red-500">
         <h1 className="text-2xl font-bold">Error Loading Dashboard</h1>
         <p>{error instanceof Error ? error.message : 'An unknown error occurred'}</p>
-      </div>
-    )
-  }
-}
+      </d
